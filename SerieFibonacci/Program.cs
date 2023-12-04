@@ -1,16 +1,15 @@
 ﻿using System.Runtime.InteropServices;
-using SerieFibonacci.entities;
-
+using SerieFibonacci.Class;
 internal class Program
 {
     private static void Main(string[] args)
     {
         Fibonacci ejercicios = new Fibonacci();
-        // var result = "";
         bool run = true;
         byte opc = 0;
         while (run)
         {
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
             Console.WriteLine("1. Entregar el n-ésimo numero");
             Console.WriteLine("2. Comprobar numero");
@@ -50,11 +49,13 @@ internal class Program
                 }
                 catch (OverflowException e)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"El numero de entrada o salida es demasiado grande \n Mensaje: {e.Message}");
                 }
             }
             catch (FormatException e)
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"Error: {e.StackTrace}\n\nMensaje: {e.Message}");
             }
             Console.ReadKey();

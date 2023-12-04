@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace SerieFibonacci.entities
+namespace SerieFibonacci.Class
 {
     public class Fibonacci
     {
