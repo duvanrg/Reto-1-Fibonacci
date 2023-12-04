@@ -8,6 +8,7 @@ internal class Program
         Fibonacci ejercicios = new Fibonacci();
         // var result = "";
         bool run = true;
+        byte opc = 0;
         while (run)
         {
             Console.Clear();
@@ -16,28 +17,45 @@ internal class Program
             Console.WriteLine("3. Entregar n numeros de fibonacci");
             Console.WriteLine("4. Salir");
             Console.Write("> ");
-            byte opc = Convert.ToByte(Console.ReadLine());
-            Console.Clear();
-            switch (opc)
+            try
             {
-                case 1:
-                    Console.WriteLine($"Digite el numero de entrada para la serie de fibonacci: ");
-                    Console.Write("> ");
-                    ejercicios.Ejercicio_1(Convert.ToInt32(Console.ReadLine()));
-                    break;
-                case 2:
-                    Console.WriteLine($"Digite el numero a comprobar en la serie de fibonacci: ");
-                    Console.Write("> ");
-                    ejercicios.Ejercicio_2(Convert.ToInt32(Console.ReadLine()));
-                    break;
-                case 3:
-                    Console.WriteLine($"Digite la cantidad de numeros que desea recibir de la serie de fibonacci: ");
-                    Console.Write("> ");
-                    ejercicios.Ejercicio_3(Convert.ToInt32(Console.ReadLine()));
-                    break;
-                default:
-                    run = false;
-                    break;
+                opc = Convert.ToByte(Console.ReadLine());
+                Console.Clear();
+
+                try
+                {
+
+
+                    switch (opc)
+                    {
+                        case 1:
+                            Console.WriteLine($"Digite el numero de entrada para la serie de fibonacci: ");
+                            Console.Write("> ");
+                            ejercicios.Ejercicio_1(Convert.ToInt32(Console.ReadLine()));
+                            break;
+                        case 2:
+                            Console.WriteLine($"Digite el numero a comprobar en la serie de fibonacci: ");
+                            Console.Write("> ");
+                            ejercicios.Ejercicio_2(Convert.ToInt32(Console.ReadLine()));
+                            break;
+                        case 3:
+                            Console.WriteLine($"Digite la cantidad de numeros que desea recibir de la serie de fibonacci: ");
+                            Console.Write("> ");
+                            ejercicios.Ejercicio_3(Convert.ToInt32(Console.ReadLine()));
+                            break;
+                        default:
+                            run = false;
+                            break;
+                    }
+                }
+                catch (OverflowException e)
+                {
+                    Console.WriteLine($"El numero de entrada o salida es demasiado grande \n Mensaje: {e.Message}");
+                }
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine($"Error: {e.StackTrace}\n\nMensaje: {e.Message}");
             }
             Console.ReadKey();
         }
